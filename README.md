@@ -5,7 +5,11 @@
 Codex LED Widget 是一个 Windows 漂亮的桌面透明质感高颜值悬浮小组件，用于显示本机 Codex 剩余额度。
 
 界面采用液态玻璃质感，并通过红绿灯状态快速展示额度情况。
-![Codex LED Widget Screenshot](assets/screenshot.png)
+![Codex LED Widget Screenshot](assets/1.png)
+![Codex LED Widget Screenshot](assets/2.png)
+![Codex LED Widget Screenshot](assets/3.png)
+![Codex LED Widget Screenshot](assets/4.png)
+![Codex LED Widget Screenshot](assets/5.png)
 ## 功能
 
 - 液态玻璃质感界面
