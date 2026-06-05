@@ -183,7 +183,7 @@ codex-led-widget/
 
 ### 这个工具支持 macOS 或 Linux 吗？
 
-目前主要面向 Windows 使用。
+目前主要面向 Windows 使用。如你需要可以联系我定制
 
 ### 我需要手动输入 Codex Token 吗？
 
@@ -229,7 +229,7 @@ codex-led-widget/
 欢迎提交 Issue 和 Pull Request。
 
 如果你发现 Bug、有功能建议，或者想改进界面，可以直接打开一个 Issue。
-
+支持：hkkangzhuo@qq.com
 ---
 
 ## 📄 开源协议
@@ -407,7 +407,7 @@ codex-led-widget/
 
 ### Does this work on macOS or Linux?
 
-Currently, this project is mainly built for Windows.
+Currently, this project is mainly built for Windows.If you need, you can contact me for customization.
 
 ### Do I need to enter my Codex token?
 
@@ -451,7 +451,7 @@ No. The widget is intended to read and display local quota status only.
 Issues and pull requests are welcome.
 
 If you find a bug, have a feature request, or want to improve the UI, feel free to open an issue.
-
+support:hkkangzhuo@qq.com
 ---
 
 ## 📄 License
