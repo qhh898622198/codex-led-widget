@@ -235,6 +235,7 @@ body[data-state="danger"] {
   overflow: visible;
   background: transparent;
   transition: height 650ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  z-index: 1;
 }
 
 .water-svg {
@@ -329,12 +330,41 @@ body[data-state="danger"] .water-svg-b {
 }
 
 .orb-shine {
-  display: none;
+  position: absolute;
+  z-index: 4;
+  display: block;
+  pointer-events: none;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at 34% 38%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.38) 42%, transparent 72%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.46), transparent 58%);
+  filter: blur(0.2px);
+  opacity: 0.78;
+  transform: rotate(-18deg);
+  mix-blend-mode: screen;
+}
+
+.orb::after {
+  position: absolute;
+  inset: 8px 10px 12px;
+  z-index: 3;
+  border-radius: 50%;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 31% 24%, rgba(255, 255, 255, 0.28), transparent 18%),
+    radial-gradient(circle at 70% 76%, color-mix(in srgb, var(--state), white 18%), transparent 32%);
+  box-shadow:
+    inset -10px -14px 22px rgba(0, 0, 0, 0.2),
+    inset 8px 9px 18px rgba(255, 255, 255, 0.12);
+  opacity: 0.86;
+  mix-blend-mode: screen;
 }
 
 .orb-copy {
   position: absolute;
   inset: 0;
+  z-index: 5;
   display: grid;
   align-content: center;
   justify-items: center;
