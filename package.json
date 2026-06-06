@@ -1,0 +1,41 @@
+{
+  "name": "codex-quota-glass-widget",
+  "version": "0.1.0",
+  "description": "Liquid glass desktop widget for local Codex quota.",
+  "author": "Codex Quota Glass Widget contributors",
+  "main": "src/main/main.js",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:dir": "set CSC_IDENTITY_AUTO_DISCOVERY=false&& electron-builder --dir",
+    "build": "set CSC_IDENTITY_AUTO_DISCOVERY=false&& electron-builder --win portable"
+  },
+  "build": {
+    "appId": "local.codex.quota.glass.widget",
+    "productName": "Codex Quota Glass",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "CodexQuotaGlass.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "31.7.7",
+    "electron-builder": "24.13.3"
+  }
+}
