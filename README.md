@@ -6,6 +6,7 @@
 
 ![small widget](assets/screenshots/small.png)
 ![medium widget](assets/screenshots/medium.png)
+![hover widget](assets/screenshots/small1.png)
 
 ## 特性
 
@@ -31,6 +32,17 @@ npm run build
 ```
 
 打包产物会输出到 `dist/CodexQuotaGlass.exe`。
+
+## 下载后打不开？
+
+Windows 可能会因为 exe 没有代码签名而弹出 SmartScreen 提示，例如“Windows 已保护你的电脑”。这不代表程序损坏。
+
+处理方式：
+
+1. 点击提示窗口里的 `更多信息`。
+2. 点击 `仍要运行`。
+
+如果你不信任下载来源，请不要运行 exe。建议只从本仓库的 Release 页面下载。
 
 ## 额度数据
 
