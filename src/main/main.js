@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, screen } = require("electron");
 const path = require("node:path");
+const net = require("node:net");
 const { readQuota } = require("./quota-service");
 
 const sizes = {
@@ -9,6 +10,49 @@ const sizes = {
 
 let win;
 let currentSize = "medium";
+let instanceServer;
+const instanceHost = "127.0.0.1";
+const instancePort = 47631;
+
+const gotSingleInstanceLock = app.requestSingleInstanceLock();
+
+if (!gotSingleInstanceLock) {
+  app.quit();
+}
+
+function focusWindow() {
+  if (!win) return;
+  if (!win.isVisible()) win.show();
+  win.setAlwaysOnTop(true);
+  win.focus();
+}
+
+function acquirePortLock() {
+  return new Promise((resolve) => {
+    const server = net.createServer((socket) => {
+      socket.on("data", () => focusWindow());
+      socket.end();
+    });
+
+    server.on("error", (error) => {
+      if (error.code !== "EADDRINUSE") {
+        resolve(true);
+        return;
+      }
+
+      const client = net.createConnection({ host: instanceHost, port: instancePort }, () => {
+        client.end("focus");
+      });
+      client.on("error", () => {});
+      resolve(false);
+    });
+
+    server.listen(instancePort, instanceHost, () => {
+      instanceServer = server;
+      resolve(true);
+    });
+  });
+}
 
 function createWindow() {
   win = new BrowserWindow({
@@ -91,8 +135,17 @@ function hidePeek(screenCenterX, screenCenterY) {
   return currentSize;
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  if (!(await acquirePortLock())) {
+    app.quit();
+    return;
+  }
+
   createWindow();
+
+  app.on("second-instance", () => {
+    focusWindow();
+  });
 
   ipcMain.handle("quota:read", async () => readQuota());
   ipcMain.handle("window:close", () => app.quit());
@@ -120,4 +173,8 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", (event) => {
   event.preventDefault();
+});
+
+app.on("before-quit", () => {
+  instanceServer?.close();
 });
