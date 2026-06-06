@@ -6,6 +6,7 @@
 
 ![small widget](assets/screenshots/small.png)
 ![medium widget](assets/screenshots/medium.png)
+![hover widget](assets/screenshots/small1.png)
 
 ## 特性
 
