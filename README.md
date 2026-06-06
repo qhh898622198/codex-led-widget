@@ -42,6 +42,15 @@ Windows 可能会因为 exe 没有代码签名而弹出 SmartScreen 提示，例
 1. 点击提示窗口里的 `更多信息`。
 2. 点击 `仍要运行`。
 
+如果双击后没有任何窗口，也没有提示，可能是下载文件仍带有 Windows 的网络来源阻止标记。可以任选一种方式解除：
+
+- 右键 `CodexQuotaGlass.exe`，打开 `属性`，勾选或点击 `解除锁定`，然后确定。
+- 或者在 PowerShell 里执行：
+
+```powershell
+Unblock-File .\CodexQuotaGlass.exe
+```
+
 如果你不信任下载来源，请不要运行 exe。建议只从本仓库的 Release 页面下载。
 
 ## 额度数据
